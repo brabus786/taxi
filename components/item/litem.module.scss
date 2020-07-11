@@ -1,0 +1,60 @@
+@import '../../styles/variables.scss';
+
+.Item{
+    border-bottom:1px solid $blue;
+    display: grid;
+    grid-template-rows: 25px 25px;
+    grid-template-columns: 55px auto 55px 35px;
+    column-gap: 10px;
+    padding: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover{
+        background: rgba(1,1,1, .15);
+    }
+
+    .Item__kar{
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .Item__manufacturer{
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        color: black;
+    }
+    .Item__color{
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: grey;
+    }
+    .Item__distance{
+        grid-column: 3 / 4;
+        grid-row: 2 / 3;
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: grey;
+    }
+    .Item__UI{
+        grid-column: 4 / 5;
+        grid-row: 1 / 3;
+        width: 20px;
+        height: 20px;
+        border:2px solid grey;
+        transform: rotate(50grad);
+        border-left: none;
+        border-bottom: none;
+        align-self: center;
+        justify-self: center;
+    }
+    
+}
