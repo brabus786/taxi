@@ -1,0 +1,21 @@
+.heder{
+
+    .heder__inerWrap{
+        width: 100%;
+        height: 70px;
+        border-radius: 8px;
+        border:1px solid #090979;
+        margin-bottom: 30px;
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+
+        .logo{
+            font-size: 46px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            text-decoration: none;
+            margin-left: 30px;
+        }
+    }
+}

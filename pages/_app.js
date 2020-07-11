@@ -1,5 +1,6 @@
 import  {createWrapper} from 'next-redux-wrapper';
 import initStore from '../store';
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 function MyApp({ Component, pageProps}) {
