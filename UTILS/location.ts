@@ -20,14 +20,14 @@ export const getLocation = async () => {
 }
 
 
-const getTownUser = async (latLng) => {
+export const getTownUser = async (latLng) => {
 
     Geocode.setApiKey("AIzaSyBWtEzFuGqWtyuRCc3mgxETV2z4R2NKaMA");
     Geocode.setLanguage("ru");
     const adres = await Geocode.fromLatLng(latLng !== undefined ? latLng.lat : 0, latLng !== undefined ? latLng.lng : 0).then(
         (response) => {
-            console.log(response);
-            const address = response.results[0].address_components;
+           // console.log(response);
+            const address = response.results[0].formatted_address;
 
             return address
         },

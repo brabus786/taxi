@@ -1,4 +1,5 @@
-export const COUNTER_INCRIMENT = 'COUNTER_INCRIMENT'; //Will add one to counter
-export const COUNTER_DECRIMENT = 'COUNTER_DECRIMENT'; //Will subscruct one from counter
 
-export const SET_CITY = 'SET_CITY'; // set city
+export const CURRENT_LOCATION = 'CURRENT_LOCATION'; // CURRENT_LOCATION
+export const DESCRIPTION_LOCATION = 'DESCRIPTION_LOCATION'; //description
+
+export const GET_AVAILABLE = 'GET_AVAILABLE'; // getAvailable

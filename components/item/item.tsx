@@ -2,13 +2,19 @@ import React from 'react';
 import styles from './litem.module.scss';
 import img from '../../img/img.jpg';
 
-const Item = () => {
-    return(
+interface CarObject {
+    car_color: string,
+    car_mark: string,
+    distance: number
+}
+
+const Item = (props: CarObject) => {
+    return (
         <div className={styles.Item}>
-            <img className={styles.Item__kar} src={img} alt="icon"/>
-            <span className={styles.Item__manufacturer}>chevrolet lacetty</span>
-            <span className={styles.Item__color}>серый</span>
-            <span className={styles.Item__distance}>100 m</span>
+            <img className={styles.Item__kar} src={img} alt="icon" />
+            <span className={styles.Item__manufacturer}>{props.car_mark}</span>
+            <span className={styles.Item__color}>{props.car_color}</span>
+            <span className={styles.Item__distance}>{props.distance} m</span>
             <span className={styles.Item__UI}></span>
         </div>
     );

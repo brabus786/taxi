@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import counterReducer from './counter';
 import location from './location';
+import getAvailable from './getAvailable';
 
-const rootReducer = combineReducers({
-    counter: counterReducer,
+const rootReducer = combineReducers({ 
     location: location,
+    getAvailable:getAvailable,
 });
 
 export default rootReducer;

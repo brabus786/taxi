@@ -1,23 +1,50 @@
 import { createWrapper } from 'next-redux-wrapper';
+import { currentLocation } from '../store/actions/Location';
+import { getAvailableCrew } from '../store/actions/getAvailable';
+import getAvailable from '../api/getAvailible';
 import { useEffect } from 'react';
+
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import initStore from '../store';
-import { latLng } from '../UTILS/location';
+import { latLng, getLocation } from '../UTILS/location';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/global.scss';
 
 
 function MyApp({ Component, pageProps }) {
 
-    
-
-    const city = async () => {
-        const setSity = await latLng();
-        console.log(setSity);
-        // store.dispatch({ type: 'ADD_TOWN', setSity });
+    const location = useSelector(state => state.location);
+    const dispatch = useDispatch();
+  
+    const currentLoc = async () => {
+        const set = await getLocation();
+        dispatch(currentLocation(set))
     }
 
-    city();
-   
+    const crew = () => {
+        const loc = {
+            source_time: '0830543058305305',
+            addresses: [{
+                address: 'ttw wewe wewe',
+                lat: location.latLng.lat,
+                lng: location.latLng.lng,
+            }]
+        }
+        const getCrews = getAvailable(loc);
+        dispatch(getAvailableCrew(getCrews.data.crews_info))
+    }
+
+
+    useEffect(() => {
+        currentLoc();
+    },[]);
+
+    useEffect(() => {
+        crew();
+    },[location.latLng.lat])
+
 
     return (
         <>

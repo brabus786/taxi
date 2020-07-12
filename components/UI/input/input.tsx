@@ -1,12 +1,18 @@
-import React from "react";
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { currentLocation } from '../../../store/actions/Location';
+
+import usePlacesAutocomplete, { getGeocode,getLatLng, } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import styles from './input.module.scss';
  
 const PlacesAutocomplete = () => {
+
+  const locationDescription = useSelector((state) => state.location.description);
+  const dispatch = useDispatch();
+
+
+
   const {
     ready,
     value,
@@ -14,11 +20,17 @@ const PlacesAutocomplete = () => {
     setValue,
     clearSuggestions,
   } = usePlacesAutocomplete({
+    
     requestOptions: {
       /* Define search scope here */
     },
     debounce: 300,
   });
+
+  useEffect(() => {
+    setValue(locationDescription, false);
+  }, [locationDescription]);
+
   const ref = useOnclickOutside(() => {
     // When user clicks outside of the component, we can dismiss
     // the searched suggestions by calling this method
@@ -40,6 +52,9 @@ const PlacesAutocomplete = () => {
     getGeocode({ address: description })
       .then((results) => getLatLng(results[0]))
       .then(({ lat, lng }) => {
+
+        dispatch(currentLocation({ lat, lng }))
+
         console.log("📍 Coordinates: ", { lat, lng });
       })
       .catch((error) => {
