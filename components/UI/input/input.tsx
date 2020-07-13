@@ -35,11 +35,14 @@ const PlacesAutocomplete: FC = () => {
   const ref = useOnclickOutside(() => {
     // When user clicks outside of the component, we can dismiss
     // the searched suggestions by calling this method
+
     clearSuggestions();
   });
  
   const handleInput = (e) => {
     // Update the keyword of the input element
+    console.log(data);
+
     if(e.target.value === ''){
       dispatch(descriptionLocation(''))
     }

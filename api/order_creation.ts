@@ -8,18 +8,15 @@ interface order {
         lat: number,
         lon: number,
         crew_id:number,
+        source_time:number,
     }
 }
 
 
-const date = new Date;
-const uni = date.getTime();
-
 
 const orderCreation = (props: order) => {
-
     const order = {
-        source_time: uni,
+        source_time: props.data.source_time,
         addresses: [{
             address: props.data.address,
             lat: props.data.lat,

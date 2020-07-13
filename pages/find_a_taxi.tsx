@@ -5,37 +5,43 @@ import FindATaxiTemplate from '../templates/find_a_taxi_template/find_a_taxi_tem
 import orderCreation from '../api/order_creation';
 
 const FindATaxi = () => {
-    
-    const [error,setError] = useState(false);
+
+    const [error, setError] = useState(false);
     const Location = useSelector(state => state.location);
     const Crew = useSelector(state => state.getAvailable);
-    
+
 
     const onclick = () => {
-      
-        if(Location.description === ''){
+
+        const date = new Date;
+        const uni = date.getTime();
+
+        
+
+        if (Location.description === '') {
             setError(true);
             return;
-        }else{
+        } else {
             setError(false);
         }
 
         const orderGet = {
-            code:0,
+            code: 0,
             descr: 'Ok',
             data: {
                 order_id: 12345,
                 address: Location.description,
                 lat: Location.latLng.lat,
                 lon: Location.latLng.lng,
-                crew_id:Crew[0].crew_id,
+                crew_id: Crew[0].crew_id,
+                source_time:uni,
             }
         };
 
         const order = JSON.stringify(orderCreation(orderGet));
-        
+
         alert(order);
-       
+
     }
 
     return (
