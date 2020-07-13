@@ -4,13 +4,21 @@ import Input from '../UI/input/input';
 import CardKar from '../card_kar/card_kar';
 import styles from './order_details.module.scss';
 
-const OrderDetails = () => {
+const OrderDetails = (props) => {
 
+   
     const crew = useSelector((state) => state.getAvailable);
+
+    let error = null;
+    if(props.error){
+        error = <p className={styles.error}>Введите правильный адрес</p>
+    }
 
     return (
         <div className={styles.OrderDetails}>
+            {error}
             <Input
+               
             />
             <p className={styles.OrderDetails__title}>Подходящий экипаж</p>
             <CardKar

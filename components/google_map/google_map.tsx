@@ -33,8 +33,7 @@ const MyMapComponent = withGoogleMap((props: MyMapProps) => {
 
         const allMarkers = [...coordinatesTaxi];
         if (Location.latLng.let) allMarkers.push(Location.latLng);
-        console.log(allMarkers);
-
+       
         setBounds(allMarkers)
     }
 
@@ -47,7 +46,6 @@ const MyMapComponent = withGoogleMap((props: MyMapProps) => {
     }
 
     useEffect(() => {
-        console.log('Update Marker');
         addMarkers();
     }, [LocationCar])
 
@@ -89,7 +87,6 @@ const MyMapComponent = withGoogleMap((props: MyMapProps) => {
                 />
                 {
                     coordinates.map((c, i) => {
-                        console.log(c)
                         return (
                             <Marker
                                 key={i}

@@ -1,6 +1,6 @@
 import React, { useEffect, ComponentClass, FC } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { currentLocation } from '../../../store/actions/Location';
+import { currentLocation, descriptionLocation } from '../../../store/actions/Location';
 import { withScriptjs } from "react-google-maps";
 
 import usePlacesAutocomplete, { getGeocode,getLatLng, } from "use-places-autocomplete";
@@ -40,21 +40,27 @@ const PlacesAutocomplete: FC = () => {
  
   const handleInput = (e) => {
     // Update the keyword of the input element
+    if(e.target.value === ''){
+      dispatch(descriptionLocation(''))
+    }
     setValue(e.target.value);
   };
+
+
  
   const handleSelect = ({ description }) => () => {
     // When user selects a place, we can replace the keyword without request data from API
     // by setting the second parameter to "false"
     setValue(description, false);
     clearSuggestions();
- 
+    console.log(description);
     // Get latitude and longitude via utility functions
     getGeocode({ address: description })
       .then((results) => getLatLng(results[0]))
       .then(({ lat, lng }) => {
 
         dispatch(currentLocation({ lat, lng }))
+        dispatch(descriptionLocation(description))
 
         console.log("📍 Coordinates: ", { lat, lng });
       })
@@ -69,7 +75,7 @@ const PlacesAutocomplete: FC = () => {
         id,
         structured_formatting: { main_text, secondary_text },
       } = suggestion;
-      console.log(id)
+  
       return (
         <li key={id === undefined?i:id} onClick={handleSelect(suggestion)}>
           <strong>{main_text}</strong> <small>{secondary_text}</small>

@@ -5,13 +5,17 @@ import TaxiList from '../../components/taxi_list/taxi_list';
 import Button from '../../components/UI/button/button';
 import { Container, Row, Col } from 'reactstrap';
 
-const FindATaxi = () => {
+
+
+const FindATaxi = (props) => {
     return (
         <div>
             <Container>
                 <Row>
                     <Col xl='12'>
-                        <OrderDetails />
+                        <OrderDetails
+                            error={props.error}
+                        />
                     </Col>
                     <Col xl='8'>
                         <BlockMap />
@@ -22,6 +26,7 @@ const FindATaxi = () => {
                     <Col xl='12'>
                         <Button 
                             text='Заказать'
+                            onclick={props.onclick}
                         />
                     </Col>
                 </Row>
