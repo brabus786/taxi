@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWtEzFuGqWtyuRCc3mgxETV2z4R2NKaMA&libraries=places&callback=initMap&language=ru-RU"
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWtEzFuGqWtyuRCc3mgxETV2z4R2NKaMA&libraries=places&language=ru-RU"
             ></script>
             <Component {...pageProps} />
         </>

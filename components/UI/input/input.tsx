@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, ComponentClass, FC } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { currentLocation } from '../../../store/actions/Location';
+import { withScriptjs } from "react-google-maps";
 
 import usePlacesAutocomplete, { getGeocode,getLatLng, } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import styles from './input.module.scss';
  
-const PlacesAutocomplete = () => {
+const PlacesAutocomplete: FC = () => {
 
   const locationDescription = useSelector((state) => state.location.description);
   const dispatch = useDispatch();

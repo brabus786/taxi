@@ -2,6 +2,7 @@ import React from 'react';
 import OrderDetails from '../../components/order_details/order_details';
 import BlockMap from '../../components/block_map/block_map';
 import TaxiList from '../../components/taxi_list/taxi_list';
+import Button from '../../components/UI/button/button';
 import { Container, Row, Col } from 'reactstrap';
 
 const FindATaxi = () => {
@@ -17,6 +18,11 @@ const FindATaxi = () => {
                     </Col>
                     <Col xl='4'>
                         <TaxiList />
+                    </Col>
+                    <Col xl='12'>
+                        <Button 
+                            text='Заказать'
+                        />
                     </Col>
                 </Row>
             </Container>
