@@ -6,7 +6,7 @@ const initStore = (initialState) => {
     let composeEnhancers = compose;
 
     if (process.browser) {
-        composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+        composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     }
 
 
