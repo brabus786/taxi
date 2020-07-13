@@ -4,7 +4,7 @@ const initialState = [];
 
 const reducer = (state = initialState, action) => {
     if (action.type === actionType.GET_AVAILABLE) {
-        const newState = [...action.crews]
+        const newState = [ ...action.crews ]
         return newState;
     }
     return state;
