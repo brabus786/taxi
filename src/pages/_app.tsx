@@ -36,7 +36,6 @@ function MyApp({ Component, pageProps }) {
         dispatch(getAvailableCrew(getCrews.data.crews_info))
     }
 
-
     useEffect(() => {
         currentLoc();
     },[]);
@@ -44,7 +43,6 @@ function MyApp({ Component, pageProps }) {
     useEffect(() => {
         crew();
     },[location.latLng.lat])
-
 
     return (
         <>
